@@ -6,12 +6,20 @@ import "bootstrap-social/bootstrap-social.css";
 import "./index.css";
 import App from "./App";
 import reportWebVitals from "./reportWebVitals";
+import Home from "./components/HomeComponent";
+import Main from "./components/MainComponent";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import Header from "./components/HeaderComponent";
+import Footer from "./components/FooterComponent";
+import Menu from "./components/MenuComponent";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>
+  <BrowserRouter>
+    <div className="App">
+      <Main />
+    </div>
+  </BrowserRouter>
 );
 
 // If you want to start measuring performance in your app, pass a function
