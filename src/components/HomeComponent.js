@@ -39,7 +39,6 @@ function Home(props) {
           <Rendercard item={props.leader} />
         </div>
       </div>
-      <h4>{props.dish.name}</h4>
     </div>
   );
 }
