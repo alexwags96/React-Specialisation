@@ -60,7 +60,7 @@ const DishDetail = (props) => {
   const commentsParam = props.comments.filter(
     (comment) => comment.dishId == params.dishId
   );
-  console.log(commentsParam);
+  // console.log(commentsParam);
   if (dishParam != null) {
     return (
       // <div>{params.dishId}</div>

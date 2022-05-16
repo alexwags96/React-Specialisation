@@ -10,6 +10,7 @@ import { LEADERS } from "../shared/leaders";
 import { PROMOTIONS } from "../shared/promotions";
 import { Routes, Route, Navigate, useParams } from "react-router-dom";
 import Contact from "./ContactComponent";
+import About from "./AboutComponent";
 
 class Main extends Component {
   constructor(props) {
@@ -72,6 +73,11 @@ class Main extends Component {
             }
           />
           <Route exact path="/contactus" element={<Contact />} />
+          <Route
+            exact
+            path="/aboutus"
+            element={<About leaders={this.state.leaders} />}
+          />
           <Route path="*" element={<Navigate to="/" replace />} />
         </Routes>
         <Footer />
