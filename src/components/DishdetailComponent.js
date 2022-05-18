@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import {
   Card,
   CardImg,
@@ -9,6 +9,7 @@ import {
   BreadcrumbItem,
 } from "reactstrap";
 import { Link, useParams } from "react-router-dom";
+import CommentForm from "./CommentForm";
 
 function RenderDish({ dish }) {
   return (
@@ -46,6 +47,7 @@ function RenderComments({ comments }) {
             );
           })}
         </ul>
+        <CommentForm />
       </div>
     );
   } else {
@@ -73,7 +75,7 @@ const DishDetail = (props) => {
             <BreadcrumbItem active>{dishParam.name}</BreadcrumbItem>
           </Breadcrumb>
           <div className="col-12">
-            <h3>{dishParam.name}</h3>
+            <h3>Menu</h3>
             <hr />
           </div>
         </div>
