@@ -12,14 +12,19 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Header from "./components/HeaderComponent";
 import Footer from "./components/FooterComponent";
 import Menu from "./components/MenuComponent";
+import { Provider } from "react-redux";
+import { ConfigureStore } from "./redux/configureStore";
 
+const store = ConfigureStore();
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
-  <BrowserRouter>
-    <div className="App">
-      <Main />
-    </div>
-  </BrowserRouter>
+  <Provider store={store}>
+    <BrowserRouter>
+      <div className="App">
+        <Main />
+      </div>
+    </BrowserRouter>
+  </Provider>
 );
 
 // If you want to start measuring performance in your app, pass a function
