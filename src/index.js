@@ -4,10 +4,10 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import "font-awesome/css/font-awesome.min.css";
 import "bootstrap-social/bootstrap-social.css";
 import "./index.css";
+import App from "./App";
 import reportWebVitals from "./reportWebVitals";
 import Main from "./components/MainComponent";
-import { BrowserRouter } from "react-router-dom";
-
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { Provider } from "react-redux";
 import { ConfigureStore } from "./redux/configureStore";
 
@@ -16,7 +16,7 @@ const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <Provider store={store}>
     <BrowserRouter>
-      <div className="App">
+      <div className={App}>
         <Main />
       </div>
     </BrowserRouter>
