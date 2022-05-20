@@ -5,7 +5,13 @@ import Header from "./HeaderComponent";
 import Footer from "./FooterComponent";
 import DishDetail from "./DishdetailComponent";
 
-import { Routes, Route, Navigate } from "react-router-dom";
+import {
+  Routes,
+  Route,
+  Navigate,
+  useLocation,
+  useNavigate,
+} from "react-router-dom";
 import Contact from "./ContactComponent";
 import About from "./AboutComponent";
 import { connect } from "react-redux";
@@ -16,6 +22,7 @@ import {
   fetchPromos,
 } from "../redux/ActionCreators";
 import { actions } from "react-redux-form";
+import { TransitionGroup, CSSTransition } from "react-transition-group";
 
 const mapStateToProps = (state) => {
   return {
@@ -94,6 +101,13 @@ class Main extends Component {
     return (
       <div>
         <Header />
+        {/* <TransitionGroup>
+          <CSSTransition
+            // key={() => Location()}
+            classNames="page"
+            timeout={300}
+          > */}
+
         <Routes>
           <Route path="/" element={HomePage()} />
           <Route
@@ -127,6 +141,8 @@ class Main extends Component {
           />
           <Route path="*" element={<Navigate to="/" replace />} />
         </Routes>
+        {/* </CSSTransition>
+        </TransitionGroup> */}
         <Footer />
       </div>
     );
