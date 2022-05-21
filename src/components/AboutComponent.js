@@ -8,22 +8,48 @@ import {
   Media,
 } from "reactstrap";
 import { Link } from "react-router-dom";
+import { baseUrl } from "../shared/baseUrl";
+import { Loading } from "./LoadingComponent";
+import { FadeTransform, Fade, Stagger } from "react-animation-components";
 
-const RenderLeader = (props) => {
-  const leader = props.leaders.map((leader) => (
-    <div key={leader.id} className="col-12 mt-5">
-      <Media tag="li">
-        <Media left middle>
-          <Media object src={leader.image} alt={leader.name} />
+const RenderLeader = ({ leaders, leadersLoading, leadersErrMess }) => {
+  const leader = leaders.map((leader) => (
+    <Fade in>
+      <div key={leader.id} className="col-12 mt-5">
+        <Media tag="li">
+          <Media left middle>
+            <Media object src={baseUrl + leader.image} alt={leader.name} />
+          </Media>
+          <Media body className="ml-5">
+            <Media heading>{leader.name}</Media>
+            <p>{leader.description}</p>
+          </Media>
         </Media>
-        <Media body className="ml-5">
-          <Media heading>{leader.name}</Media>
-          <p>{leader.description}</p>
-        </Media>
-      </Media>
-    </div>
+      </div>
+    </Fade>
   ));
-  return <>{leader}</>;
+  if (leadersLoading) {
+    return (
+      <div className="container">
+        <div className="row">
+          <Loading />
+        </div>
+      </div>
+    );
+  } else if (leadersErrMess) {
+    return (
+      <div className="container">
+        <div className="row">
+          <h4>{leadersErrMess}</h4>
+        </div>
+      </div>
+    );
+  } else
+    return (
+      <>
+        <Stagger in>{leader}</Stagger>
+      </>
+    );
 };
 
 function About(props) {
@@ -103,7 +129,11 @@ function About(props) {
           <h2>Corporate Leadership</h2>
         </div>
         <div className="col-12">
-          <RenderLeader leaders={props.leaders} />
+          <RenderLeader
+            leaders={props.leaders}
+            leadersLoading={props.leadersLoading}
+            leadersErrMess={props.leadersErrMess}
+          />
         </div>
       </div>
     </div>
